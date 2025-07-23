@@ -26,6 +26,7 @@ Route::post('/confirm', [ContactController::class, 'confirm']);
 Route::post('/thanks', [ContactController::class, 'store']);
 
 Route::get('/admin', [ContactController::class, 'reset']);
+Route::get('/admin/search', [ContactController::class, 'search']);
 Route::post('/admin/search', [ContactController::class, 'search']);
 Route::post('/admin/detail', [ContactController::class, 'detail']);
 Route::delete('/admin/delete', [ContactController::class, 'destroy']);

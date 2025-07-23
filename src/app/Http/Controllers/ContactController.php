@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Contact;
+use App\Http\Requests\ContactRequest;
 
 class ContactController extends Controller
 {
@@ -14,7 +15,7 @@ class ContactController extends Controller
     return view('index', ['categories' => $categories]);
   }
 
-  public function confirm(Request $request)
+  public function confirm(ContactRequest $request)
   {
     $contact = $request->only( 
       [ 'category_id',
@@ -55,19 +56,35 @@ class ContactController extends Controller
         // 管理画面-リセット
     public function reset(Request $request)
     {
-      $contacts = Contact::all();
+      $contacts = Contact::Paginate(7)->withQueryString();
       $categories = Category::all();
 
-      return view('admin', compact('contacts', 'categories'));
+      $param = [];
+      return view('admin', ['contacts' => $contacts, 'categories' => $categories, 'param' => $param ]);
     }
 
       // 管理画面-検索
     public function search(Request $request)
     {
-      $contacts = Contact::with('category')->CategorySearch($request->category_id)->KeywordSearch($request->keyword)->get();
+      $contacts = Contact::with('category')
+      ->CategorySearch($request->category_id)
+      ->KeywordSearch($request->keyword)
+      ->GenderSearch($request->gender)
+      ->CreatedAtSearch($request->created_at)
+      ->paginate(7)
+      ->withQueryString();
+
+      //dd($request);
       $categories = Category::all();
 
-      return view('admin', compact('contacts', 'categories'));
+      $param = [
+        'category_id' => $request->category_id,
+        'keyword' => $request->keyword,
+        'gender' => $request->gender,
+        'created_at' => $request->created_at,
+      ];
+
+      return view('admin', ['contacts' => $contacts, 'categories' => $categories, 'param' => $param ]);
     }
 
     //  管理画面-削除
