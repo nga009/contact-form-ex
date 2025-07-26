@@ -1,10 +1,43 @@
 .thanks__content {
   margin: 0 auto;
-  padding: 30px 15px;
+  padding: 100px 15px;
   max-width: 1230px;
 }
 
-.thanks__heading {
-  margin-bottom: 40px;
+h2 {
+  position: relative;
+  margin-bottom: 0.2rem;
+  font-weight: bold;
+  font-size: 26px;
   text-align: center;
+  color: #82756A;
+}
+
+h2::before {
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(139,121,105,0.05);
+  font-size: 100px;
+  font-weight: normal;
+  text-transform: uppercase;
+  content: 'Thank you';
+  z-index: -1;
+}
+
+.a__button {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.a__button--home {
+  padding: 8px 40px;
+  height: 40px;
+  border: none;
+  border-radius: 3px;
+  background: #82756A;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
 }

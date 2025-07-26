@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactController;
 
 /*
@@ -15,19 +14,15 @@ use App\Http\Controllers\ContactController;
 |
 */
 
-//Route::get('/', [AuthController::class, 'index']);
-/*
-Route::middleware('auth')->group(function () {
-    Route::get('/admin', [AuthController::class, 'index']);
-});
-*/
 Route::get('/', [ContactController::class, 'index']);
 Route::post('/confirm', [ContactController::class, 'confirm']);
 Route::post('/thanks', [ContactController::class, 'store']);
 
+//Route::get('/admin', [ContactController::class, 'reset']);
+//Route::post('/admin/search', [ContactController::class, 'search']);
+//Route::post('/admin/detail', [ContactController::class, 'detail']);
+//Route::delete('/admin/delete', [ContactController::class, 'destroy']);
 Route::get('/admin', [ContactController::class, 'reset']);
-Route::get('/admin/search', [ContactController::class, 'search']);
-Route::post('/admin/search', [ContactController::class, 'search']);
-Route::post('/admin/detail', [ContactController::class, 'detail']);
-Route::delete('/admin/delete', [ContactController::class, 'destroy']);
+Route::post('/search', [ContactController::class, 'search']);
+Route::delete('/delete', [ContactController::class, 'destroy']);
 

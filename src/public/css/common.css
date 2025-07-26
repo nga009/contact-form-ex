@@ -9,25 +9,33 @@ body {
 
 .header__inner {
   margin: 0 auto;
-  padding: 15px 5px 15px 150px;
+  padding: 15px 5px;
   max-width: 1230px;
 }
 
 .header-utilities {
   display: flex;
-  align-items: center;
-  justify-content: center;
+/*  align-items: center;*/
+  justify-content:space-between;
 }
 
+.header__left {
+  width:30%;
+}
 .header__logo {
   color: #8B7969;
   font-size: 40px;
+/*  width: 40%;*/
+}
+.header__right {
+  width: 30%;
 }
 
+/*
 .header-utilities nav {
   width: 18%;
 }
-
+*/
 .header-nav__button {
   text-decoration: none;
 }

@@ -15,10 +15,13 @@
   <header class="header">
     <div class="header__inner">
       <div class="header-utilities">
+        <div class="header__left"></div>
         <div class="header__logo">
           FashionablyLate
         </div>
-        @yield('header-nav')
+        <div class="header__right">
+          @yield('header-nav')
+        </div>
       </div>
     </div>
   </header>
