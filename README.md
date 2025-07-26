@@ -3,7 +3,7 @@
 
 ## 環境構築
 Dockerビルド<br>
-1.<br>
+1.GitHub   https://github.com/nga009/contact-form-ex.git<br>
 2.docker-compose up -d --build<br>
 
 Laravel環境構築<br>
